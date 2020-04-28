@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function() {
+
   $(document).ready(function() {
     var show_error, stripeResponseHandler, submitHandler;
 
@@ -10,10 +10,10 @@ $(document).on('ready turbolinks:load', function() {
         if (Stripe){
             Stripe.card.createToken($form, stripeResponseHandler);
         } else {
-            show_error("Failed to load credit card processing functionality. Please reload this page in your browser.")
+            show_error("Failed to load credit card processing functionality. Please reload this page in your browser.");
         }
         return false;
-    }
+    };
 
     $(".cc_form").on('submit', submitHandler);
 
@@ -41,7 +41,7 @@ $(document).on('ready turbolinks:load', function() {
         
     show_error = function (message) {
       if($("#flash-messages").size() < 1){
-          $('div.container.main div:first').prepend("<div id='flash-messages'></div>")
+          $('div.container.main div:first').prepend("<div id='flash-messages'></div>");
       }
       
       $("#flash-messages").html('<div class="alert alert-warning"><a class="close" data-dismiss="alert">×</a><div id="flash_alert">' + message + '</div></div>');
@@ -49,4 +49,3 @@ $(document).on('ready turbolinks:load', function() {
       return false;
     };
   });
-});
